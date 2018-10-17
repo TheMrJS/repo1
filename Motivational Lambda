@@ -1,0 +1,19 @@
+import boto3
+import random
+
+# Lambda function to send motivational sms
+
+    
+client = boto3.client(
+    "sns",
+    aws_access_key_id= "Redacted",
+    aws_secret_access_key= "Redacted",
+    region_name = "us-east-1"
+)
+adjectives = ['wonderful', "stupendous", "awesome", "fantastic", "amazing", "splendid", "super", "tubular", "glorious"]
+
+today = random.choice(adjectives)
+client.publish(
+    PhoneNumber="Redacted",
+    Message="Have a {} day today!".format(today)
+)
